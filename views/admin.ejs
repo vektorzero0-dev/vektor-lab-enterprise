@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Console</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container" style="border-color: #dc2626;">
+        <h2 style="color: #ef4444;">⚡ KONSOL ADMINISTRATOR KORPORAT</h2>
+        <div class="card danger">
+            <p><b>Flag Rahasia Sistem:</b> <span style="color: #facc15; font-size: 18px;"><%= flag %></span></p>
+        </div>
+        <h3>Daftar Seluruh Karyawan:</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Departemen</th>
+                <th>Role</th>
+                <th>Gaji</th>
+            </tr>
+            <% users.forEach(u => { %>
+                <tr>
+                    <td><%= u.id %></td>
+                    <td><b><%= u.username %></b></td>
+                    <td><%= u.department %></td>
+                    <td><%= u.role %></td>
+                    <td>$<%= u.salary.toLocaleString() %></td>
+                </tr>
+            <% }) %>
+        </table>
+        <br>
+        <a href="/dashboard"><< Kembali ke Dashboard</a>
+    </div>
+</body>
+</html>
