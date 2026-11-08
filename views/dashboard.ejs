@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Enterprise Dashboard</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>Sesi Aktif: <span style="color: #4ade80;"><%= username %></span> [<%= role %>]</h3>
+            <div>
+                <a href="/profile" style="margin-right: 15px;">Lihat Profil Saya</a>
+                <a href="/logout" style="color: #ef4444;">[ Keluar ]</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h4>💬 Papan Catatan & Pengumuman Internal (Rentan XSS)</h4>
+            <form action="/note" method="POST">
+                <textarea name="content" rows="3" placeholder="Tulis catatan atau pesan internal..." required></textarea>
+                <button type="submit">Kirim Catatan</button>
+            </form>
+            <div style="margin-top: 15px;">
+                <% notes.forEach(n => { %>
+                    <div style="background: #050b14; padding: 10px; margin: 8px 0; border: 1px solid #334155;">
+                        <b>@<%= n.author %>:</b> <%- n.content %>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <% if (role === 'admin') { %>
+            <div class="card danger">
+                <h4>🛡️ Administrator Control Center</h4>
+                <a href="/admin-console"><button style="background: #dc2626;">Buka Konsol Admin</button></a>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
