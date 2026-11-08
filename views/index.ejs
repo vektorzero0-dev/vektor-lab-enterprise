@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Enterprise Portal // Login</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container" style="max-width: 400px;">
+        <h2>🔐 Enterprise Secure Portal</h2>
+        <% if (error) { %>
+            <div style="background: #7f1d1d; color: #fca5a5; padding: 10px; margin-bottom: 10px;"><%= error %></div>
+        <% } %>
+        <form action="/login" method="POST">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Autentikasi Masuk</button>
+        </form>
+    </div>
+</body>
+</html>
